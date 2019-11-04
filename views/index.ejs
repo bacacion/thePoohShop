@@ -1,7 +1,70 @@
+<div class="indexPage">
+    <div class="indexTop">RESTOCKS ARE EVERY MONDAY (ANNOUNCED 24 HOURS PRIOR ON INSTAGRAM)
+    </div>
+</div>
 <%- include('parts/html_head') %>
 <%- include('parts/navbar') %>
-<div class="container">
-<h2></h2>
+<div class="indexPage">
+    <div style="height: 500px; width: auto; background-color: blueviolet;" id="indexBanner"></div>
+</div>
+<div class="indexBackColor">
+    <div class="container" style="width:100%; display: flex; justify-content: flex-end;">
+        <span class="goodTag">熱門商品</span>
+        <span style="margin: 4px;">|</span>
+        <span class="goodTag">最新商品</span>
+
+    </div>
+</div>
+<div class="indexBackColor">
+    <div class="container">
+
+    </div>
 </div>
 <%- include('parts/scripts') %>
+<style>
+    .indexPage {
+        width: 100%;
+        padding-right: 25px;
+        padding-left: 25px;
+        margin-right: auto;
+        margin-left: auto;
+        background-color: #EBEDEF;
+    }
+
+    .indexTop {
+        height: 40px;
+        width: auto;
+        background-color: #F1948A;
+        color: white;
+        line-height: 40px;
+        font-size: 20px;
+        text-align: center;
+        font-family: 'Maven Pro', sans-serif;
+    }
+
+    .indexBackColor {
+        background-color: #EBEDEF;
+    }
+
+    .goodTag {
+        margin: 5px;
+        font-family: Microsoft JhengHei Light;
+    }
+    .goodTag:hover {
+        font-family: Microsoft JhengHei;
+    }
+</style>
+<script>
+    change = true;
+        function changeColor() {        
+        if(change){
+            $("#indexBanner").css("backgroundColor","#7FB3D5");
+            change = false;
+        } else {
+            $("#indexBanner").css("backgroundColor","blueviolet")
+            change = true;
+        };
+        setTimeout(changeColor(),1500);
+    };
+</script>
 <%- include('parts/html_foot') %>
