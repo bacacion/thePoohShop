@@ -7,7 +7,7 @@ const upload = multer({ dest: 'tmp_uploads/' });
 const fs = require('fs');
 const session = require('express-session');
 const moment = require('moment-timezone');
-const db = require(__dirname + '/db-connect');
+// const db = require(__dirname + '/db-connect');//家中沒有database "shop"
 
 // Middlewire
 const app = express();

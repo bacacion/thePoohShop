@@ -6,8 +6,50 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="/fontawesome/css/all.css">
-    <link href="https://fonts.googleapis.com/css?family=Maven+Pro|Montserrat&display=swap" rel="stylesheet">
-    <!-- 上面的路徑最前方必須加上/ ，才會從根目錄開始找 -->
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro|Montserrat|Mansalva&display=swap" rel="stylesheet">
+    <!-- 上面的路徑最前方必須加上/ ，才會從根目錄開始找. -->
     <title>title</title>
+    <!-- 回到頂端按鈕. -->
+    <style>
+        .toTop-arrow {
+            width: 2.5rem;
+            height: 2.5rem;
+            padding: 0;
+            margin: 0;
+            border: 0;
+            border-radius: 33%;
+            opacity: 0.6;
+            background: #000;
+            cursor: pointer;
+            position: fixed;
+            right: 1rem;
+            bottom: 1rem;
+            display: none;
+        }
+
+        .toTop-arrow::before,
+        .toTop-arrow::after {
+            width: 18px;
+            height: 5px;
+            border-radius: 3px;
+            background: #f90;
+            position: absolute;
+            content: "";
+        }
+
+        .toTop-arrow::before {
+            transform: rotate(-45deg) translate(0, -50%);
+            left: 0.6rem;
+        }
+
+        .toTop-arrow::after {
+            transform: rotate(45deg) translate(0, -50%);
+            right: 0.6rem;
+        }
+
+        .toTop-arrow:focus {
+            outline: none;
+        }
+    </style>
 </head>
 <body>

@@ -5,21 +5,53 @@
 <%- include('parts/html_head') %>
 <%- include('parts/navbar') %>
 <div class="indexPage">
-    <div style="height: 500px; width: auto; background-color: blueviolet;" id="indexBanner"></div>
+    <div id="indexBanner"></div>
 </div>
 <div class="indexBackColor">
-    <div class="container" style="width:100%; display: flex; justify-content: flex-end;">
-        <span class="goodTag">熱門商品</span>
-        <span style="margin: 4px;">|</span>
-        <span class="goodTag">最新商品</span>
-
+        <div class="container" style="width:100%; display: flex; justify-content: center;">
+            <span style="margin: 4px; font-family: 'Mansalva', cursive; font-size: 50px; margin-top: 30px; margin-bottom: 30px;">#Latest Accessories</span>
+        </div>    
     </div>
-</div>
 <div class="indexBackColor">
-    <div class="container">
-
-    </div>
+        <div class="container" style="display: flex; justify-content: center;">
+                <div class="goodFrame">
+                    <div><img class="goodPic" src="images/poohKeyBag.jpg" alt=""></div>
+                    <div class="goodText">✨小熊維尼指環扣手機支架✨
+                        滑手機30分鐘，要休息一下看看維尼❤️
+                        防掉指環設計，可旋轉360°，上下摺疊180</div>
+                </div>
+                <div class="goodFrame" >
+                    <div><img class="goodPic" src="images/poohKeyBag.jpg" alt=""></div>
+                    <div class="goodText">✨小熊維尼指環扣手機支架✨
+                        滑手機30分鐘，要休息一下看看維尼❤️
+                        防掉指環設計，可旋轉360°，上下摺疊180</div>
+                </div>
+                <div class="goodFrame">
+                    <div><img class="goodPic" src="images/poohKeyBag.jpg" alt=""></div>
+                    <div class="goodText">✨小熊維尼指環扣手機支架✨
+                        滑手機30分鐘，要休息一下看看維尼❤️
+                        防掉指環設計，可旋轉360°，上下摺疊180</div>
+                </div>
+                <div class="goodFrame">
+                    <div><img class="goodPic" src="images/poohKeyBag.jpg" alt=""></div>
+                    <div class="goodText">✨小熊維尼指環扣手機支架✨
+                        滑手機30分鐘，要休息一下看看維尼❤️
+                        防掉指環設計，可旋轉360°，上下摺疊180</div>
+                </div>
+                <div class="goodFrame">
+                    <div><img class="goodPic" src="images/poohKeyBag.jpg" alt=""></div>
+                    <div class="goodText">✨小熊維尼指環扣手機支架✨
+                        滑手機30分鐘，要休息一下看看維尼❤️
+                        防掉指環設計，可旋轉360°，上下摺疊180</div>
+                </div>
+                <!-- <div><img src="images/poohCupBag.jpg" alt=""></div>
+                <div><img src="images/poohWetWipes.jpg" alt=""></div>
+                <div><img src="images/poohCoinPurse.jpg" alt=""></div>
+                <div><img src="images/tsumCoaster.jpg" alt=""></div> -->
+        
+            </div>
 </div>
+
 <%- include('parts/scripts') %>
 <style>
     .indexPage {
@@ -29,6 +61,15 @@
         margin-right: auto;
         margin-left: auto;
         background-color: #EBEDEF;
+    }
+
+    #indexBanner {
+        height: 500px;
+        width: auto;
+        background: linear-gradient(360deg, rgba(255, 119, 137, 1)0%, rgba(213, 127, 97, 1)100%);
+        background: -moz-linear-gradient(360deg, rgba(255, 119, 137, 1)0%, rgba(213, 127, 97, 1)100%);
+        background: -webkit-linear-gradient(360deg, rgba(255, 119, 137, 1)0%, rgba(213, 127, 97, 1)100%);
+        background: -o-linear-gradient(360deg, rgba(255, 119, 137, 1)0%, rgba(213, 127, 97, 1)100%);
     }
 
     .indexTop {
@@ -50,21 +91,48 @@
         margin: 5px;
         font-family: Microsoft JhengHei Light;
     }
+
     .goodTag:hover {
         font-family: Microsoft JhengHei;
+    }
+
+    div>img {
+        height: 400px;
+        width: 400px;
+    }
+
+    .goodFrame {
+        /* background-color: black; */
+        padding: 10px;
+        margin: 5px;
+        height: 450px;
+        width: 326px;
+        border: 3px solid #FF5733;
+        border-radius: 10px;
+    }
+
+    .goodPic {
+        margin: 0;
+        height: 300px;
+        width: 300px;
+        text-align: center;
+    }
+
+    .goodText {
+        /* color: white; */
     }
 </style>
 <script>
     change = true;
-        function changeColor() {        
-        if(change){
-            $("#indexBanner").css("backgroundColor","#7FB3D5");
+    function changeColor() {
+        if (change) {
+            $("#indexBanner").css("backgroundColor", "#7FB3D5");
             change = false;
         } else {
-            $("#indexBanner").css("backgroundColor","blueviolet")
+            $("#indexBanner").css("backgroundColor", "blueviolet")
             change = true;
         };
-        setTimeout(changeColor(),1500);
+        setTimeout(changeColor(), 1500);
     };
 </script>
 <%- include('parts/html_foot') %>
