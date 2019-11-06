@@ -1,19 +1,49 @@
-<div class="indexPage">
-    <div class="indexTop">RESTOCKS ARE EVERY MONDAY (ANNOUNCED 24 HOURS PRIOR ON INSTAGRAM)
-    </div>
-</div>
 <%- include('parts/html_head') %>
 <%- include('parts/navbar') %>
-<div class="indexPage">
+<div class="indexPage indexBackColor">
     <div id="indexBanner"></div>
 </div>
+
+<div class="indexBackColor goodTag" id="newArrivals">#New Arrivals</div>
 <div class="indexBackColor">
-        <div class="container" style="width:100%; display: flex; justify-content: center;">
-            <span style="margin: 4px; font-family: 'Mansalva', cursive; font-size: 50px; margin-top: 30px; margin-bottom: 30px;">#Latest Accessories</span>
-        </div>    
+    <div style="width:auto;background-color: rgba(80, 80, 230, 50); display: flex; justify-content: flex-start;">
+        <div class="secondBanner"></div>
+        <div class="secondBannerIntro">Shop Now!</div>
     </div>
+</div>
+<div class="indexBackColor goodTag" id="aboutUs">#About Us</div>
+<div class="indexBackColor goodTag" id="contactUs"
+    style="padding-bottom: 10px; background-color: #2C3E50; color: #F4D03F;">#Contact Us</div>
+<div class="indexBackColor" style="text-align: center; background-color: #2C3E50; color: #F4D03F;">
+    <div style="display: flex; justify-content: center;">
+        <form action="#" method="GET">
+            <div class="st1">
+                <label class="la1" for="name">Name: </label>
+                <input type="text" name="name" id="name" placeholder="Your name." size="27">
+            </div>
+            <div class="st1">
+                <label class="la1" for="email">Email: </label>
+                <input type="email" name="email" id="email" placeholder="Your email." size="27">
+            </div>
+            <div class="st1">
+                <label class="la1" for="subject">Subject: </label>
+                <input type="text" name="subject" id="subject" placeholder="Subject" size="27">
+            </div>
+            <div class="st1">
+                <label class="la1" for="content">Content: </label>
+                <textarea name="content" id="content" cols="30" rows="3" style="resize:none;"></textarea>
+            </div>
+            <div class="st1" style="border-bottom: none;">
+                <button type="submit" class="btn btn-warning">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</div>
+
 <div class="indexBackColor">
-        <div class="container" style="display: flex; justify-content: center;">
+    <!-- <div class="container" style="display: flex; justify-content: center;">
                 <div class="goodFrame">
                     <div><img class="goodPic" src="images/poohKeyBag.jpg" alt=""></div>
                     <div class="goodText">✨小熊維尼指環扣手機支架✨
@@ -44,25 +74,15 @@
                         滑手機30分鐘，要休息一下看看維尼❤️
                         防掉指環設計，可旋轉360°，上下摺疊180</div>
                 </div>
-                <!-- <div><img src="images/poohCupBag.jpg" alt=""></div>
+                 <div><img src="images/poohCupBag.jpg" alt=""></div>
                 <div><img src="images/poohWetWipes.jpg" alt=""></div>
                 <div><img src="images/poohCoinPurse.jpg" alt=""></div>
-                <div><img src="images/tsumCoaster.jpg" alt=""></div> -->
-        
-            </div>
+                <div><img src="images/tsumCoaster.jpg" alt=""></div>
+    </div> -->
 </div>
 
 <%- include('parts/scripts') %>
 <style>
-    .indexPage {
-        width: 100%;
-        padding-right: 25px;
-        padding-left: 25px;
-        margin-right: auto;
-        margin-left: auto;
-        background-color: #EBEDEF;
-    }
-
     #indexBanner {
         height: 500px;
         width: auto;
@@ -71,29 +91,31 @@
         background: -webkit-linear-gradient(360deg, rgba(255, 119, 137, 1)0%, rgba(213, 127, 97, 1)100%);
         background: -o-linear-gradient(360deg, rgba(255, 119, 137, 1)0%, rgba(213, 127, 97, 1)100%);
     }
-
-    .indexTop {
-        height: 40px;
-        width: auto;
-        background-color: #F1948A;
-        color: white;
-        line-height: 40px;
-        font-size: 20px;
-        text-align: center;
-        font-family: 'Maven Pro', sans-serif;
-    }
-
-    .indexBackColor {
-        background-color: #EBEDEF;
-    }
-
     .goodTag {
-        margin: 5px;
-        font-family: Microsoft JhengHei Light;
+        font-family: 'Mansalva', cursive;
+        font-size: 50px;
+        text-align: center;
+        line-height: 50px;
+        padding: 80px;
     }
 
-    .goodTag:hover {
-        font-family: Microsoft JhengHei;
+    .secondBanner {
+        background-image: url('images/indexWall2.jpg');
+        height: 508px;
+        width: 1004px;
+    }
+
+    .secondBannerIntro {
+        width: auto;
+        line-height: 508px;
+        text-align: center;
+        color: white;
+        font-family: 'Mansalva', cursive;
+        font-size: 40px;
+    }
+
+    .secondBannerIntro:hover {
+        text-decoration: underline;
     }
 
     div>img {
@@ -113,14 +135,40 @@
 
     .goodPic {
         margin: 0;
-        height: 300px;
-        width: 300px;
+        height: 100%;
+        width: 100%;
         text-align: center;
     }
 
     .goodText {
         /* color: white; */
     }
+
+    .st1 {
+        border-bottom: 1px solid #F2F3F4;
+        width: 450px;
+        margin: 5px;
+        padding: 5px 10px;
+    }
+
+    .la1 {
+        width: 100px;
+        float: left;
+        text-align: right;
+        font-family: 'Mansalva', cursive;
+        font-size: 25px;
+    }
+
+    /* 
+    .middleBlock {
+        margin: 0px;
+        font-family: 'Mansalva', cursive;
+        font-size: 50px;
+        color: white;
+        background-color: black;
+        width: 200%;
+        text-align: center; 
+    } */
 </style>
 <script>
     change = true;

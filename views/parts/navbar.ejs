@@ -1,3 +1,7 @@
+<div class="indexPage indexBackColor">
+    <div class="indexTop">RESTOCKS ARE EVERY MONDAY (ANNOUNCED 24 HOURS PRIOR ON INSTAGRAM)
+    </div>
+</div>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="#"><img src="images/honeycomb.png" alt="" style="height: 40px; width: 40px;"></a>
@@ -14,21 +18,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/#aboutUs">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    <a class="nav-link" href="/#contactUs">Contact</a>
                 </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li> -->
                 <li class="nav-item">
                     <form class="form-inline my-2 my-lg-0">
                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -37,13 +36,31 @@
                 </li>
             </ul>
             <!-- line icon出現時，width改為200px -->
-            <div class="form-inline my-2 my-lg-0" style="width: 150px;">
-                <div class="navbar-nav mr-auto">Login</div>
+            <div class="form-inline my-2 my-lg-0" style="width: 200px;">
+                <div class="navbar-nav mr-auto"><a href="/login">Login</a></div>
                 <div class="navbar-nav mr-auto"><a href="https://www.facebook.com/PoohFavor/"><i class="fab fa-facebook-square"></i></a></div>
                 <div class="navbar-nav mr-auto"><a href="https://instagram.com/poohfavor?igshid=1snk9iiyp8etw"><i class="fab fa-instagram"></i></a></div>
-                <!-- line下拉式選單出現群組QRCode -->
-                <!-- <div class="navbar-nav mr-auto"><a href="https://instagram.com/poohfavor?igshid=1snk9iiyp8etw"><i class="fab fa-line"></i></a></div> -->
-                <div class="navbar-nav mr-auto"><i class="fas fa-shopping-cart"></i></div>
+                <div class="dropdown">
+                        <a class="navbar-nav nav-link" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fab fa-line"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <img class="dropdown-item" src="/images/lineQRCode.png" style="height: auto; width: auto;">
+                        </div>
+                    </div>
+                <div class="dropdown">
+                    <a class="navbar-nav nav-link" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">New Arrivals</a>
+                        <a class="dropdown-item" href="#">Hot Sales</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Look Around</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
