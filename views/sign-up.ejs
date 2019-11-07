@@ -1,0 +1,60 @@
+<%- include('parts/html_head') %>
+<%- include('parts/navbar') %>
+<div style="display: flex; justify-content: center;">
+    <div style="background-color: rgba(255, 255, 255, 0.9); padding: 40px; margin-top: 30px; border-radius: 10px;">
+        <%- include('parts/contentLogo') %>
+        <form action="#" method="GET">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                </div>
+            </div>
+            <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="birthday">Birthday</label>
+                        <input type="date" class="form-control" id="birthday" name="birthday" placeholder="YYYY-MM-DD">
+                    </div>
+                </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St">
+            </div>
+            <div class="form-group">
+                <label for="address2">Address 2</label>
+                <input type="text" class="form-control" id="address2" name="address2" placeholder="Apartment, studio, or floor">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-8">
+                    <label for="city">City / Country</label>
+                    <input type="text" class="form-control" id="city" name="city">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="zip">Zip</label>
+                    <input type="text" class="form-control" id="zip" name="zip">
+                </div>
+            </div>            
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </form>
+    </div>
+</div>
+
+
+
+<%- include('parts/scripts') %>
+<style>
+    body {
+        background-image: url('/images/bgimage.jpg');
+        background-repeat: no-repeat;
+        width: 100%;
+    }
+</style>
+<%- include('parts/html_foot') %>

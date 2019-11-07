@@ -7,6 +7,7 @@ const upload = multer({ dest: 'tmp_uploads/' });
 const fs = require('fs');
 const session = require('express-session');
 const moment = require('moment-timezone');
+var favicon = require('serve-favicon');
 // const db = require(__dirname + '/db-connect');//家中沒有database "shop"
 
 // Middlewire
@@ -15,6 +16,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+// app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
 
 app.use(session({
     saveUninitialized: false,
@@ -28,7 +30,34 @@ app.use(session({
 app.get('/', (req, res) => {
     res.render('index');
 });
+app.get('/login', (req, res) => {
+    let data = {
+        loginUser: req.session.loginUser || "",
+        flashMsg: req.session.flashMsg
+    };
+    delete req.session.flashMsg;
+    res.render('login', data);
+});
+app.post('/login', (req, res) => {
+    const list = {
+        "aaa@gmail.com": "1234",
+        "bbb@gmail.com": "1234"
+    }
+    if (req.body.email && list[req.body.email] === req.body.password) {
+        req.session.loginUser = req.body.email.split("@")[0];
+        res.redirect('/');
+    } else {
+        req.session.flashMsg='Incorrect email or password.'
+        res.redirect('/login');
+    };
 
+});
+app.get('/sign-up', (req, res) => {
+    res.render('sign-up');
+});
+app.get('/forget-password', (req, res) => {
+    res.render('forget-password');
+});
 
 
 

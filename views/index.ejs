@@ -1,17 +1,29 @@
 <%- include('parts/html_head') %>
 <%- include('parts/navbar') %>
+<!-- Banner -->
 <div class="indexPage indexBackColor">
-    <div id="indexBanner"></div>
+    <div class="indexBanner"></div>
 </div>
-
-<div class="indexBackColor goodTag" id="newArrivals">#New Arrivals</div>
-<div class="indexBackColor">
-    <div style="width:auto;background-color: rgba(80, 80, 230, 50); display: flex; justify-content: flex-start;">
-        <div class="secondBanner"></div>
-        <div class="secondBannerIntro">Shop Now!</div>
+<!-- New Arrivals -->
+<div class="indexPage goodTag" id="newArrivals">#New Arrivals</div>
+<!-- secondBanner -->
+<div class="indexPage">
+    <div class="container">
+        <div class="indexBackColor">
+            <div
+                style="width:auto;background-color: rgba(80, 80, 230, 0.6); display: flex; justify-content: flex-start;">
+                <div class="secondBanner"></div>
+                <div class="secondBannerIntro" style="margin:auto">Shop Now!</div>
+            </div>
+        </div>
     </div>
 </div>
+<!-- About Us -->
 <div class="indexBackColor goodTag" id="aboutUs">#About Us</div>
+<div class="indexBackColor" style="padding: 30px;">Winnie-the-Pooh first appeared by name on 24 December 1925, in a
+    Christmas story commissioned and published by the London newspaper The Evening News</div>
+
+<!-- contactUs -->
 <div class="indexBackColor goodTag" id="contactUs"
     style="padding-bottom: 10px; background-color: #2C3E50; color: #F4D03F;">#Contact Us</div>
 <div class="indexBackColor" style="text-align: center; background-color: #2C3E50; color: #F4D03F;">
@@ -19,19 +31,20 @@
         <form action="#" method="GET">
             <div class="st1">
                 <label class="la1" for="name">Name: </label>
-                <input type="text" name="name" id="name" placeholder="Your name." size="27">
+                <input type="text" class="form-control" name="name" id="name" placeholder="Your name." size="27">
             </div>
             <div class="st1">
                 <label class="la1" for="email">Email: </label>
-                <input type="email" name="email" id="email" placeholder="Your email." size="27">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your email." size="27">
             </div>
             <div class="st1">
                 <label class="la1" for="subject">Subject: </label>
-                <input type="text" name="subject" id="subject" placeholder="Subject" size="27">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject." size="27">
             </div>
             <div class="st1">
                 <label class="la1" for="content">Content: </label>
-                <textarea name="content" id="content" cols="30" rows="3" style="resize:none;"></textarea>
+                <textarea class="form-control" name="content" id="content" cols="30" rows="3"
+                    style="resize:none;"></textarea>
             </div>
             <div class="st1" style="border-bottom: none;">
                 <button type="submit" class="btn btn-warning">Submit</button>
@@ -39,9 +52,6 @@
         </form>
     </div>
 </div>
-
-</div>
-
 <div class="indexBackColor">
     <!-- <div class="container" style="display: flex; justify-content: center;">
                 <div class="goodFrame">
@@ -83,14 +93,18 @@
 
 <%- include('parts/scripts') %>
 <style>
-    #indexBanner {
+    .indexBanner {
+        background-image: url('/images/indexWall.jpg');
+        background-repeat: no-repeat;
+        width: 100%;
         height: 500px;
-        width: auto;
+        /*  width: auto;
         background: linear-gradient(360deg, rgba(255, 119, 137, 1)0%, rgba(213, 127, 97, 1)100%);
         background: -moz-linear-gradient(360deg, rgba(255, 119, 137, 1)0%, rgba(213, 127, 97, 1)100%);
         background: -webkit-linear-gradient(360deg, rgba(255, 119, 137, 1)0%, rgba(213, 127, 97, 1)100%);
-        background: -o-linear-gradient(360deg, rgba(255, 119, 137, 1)0%, rgba(213, 127, 97, 1)100%);
+        background: -o-linear-gradient(360deg, rgba(255, 119, 137, 1)0%, rgba(213, 127, 97, 1)100%); */
     }
+
     .goodTag {
         font-family: 'Mansalva', cursive;
         font-size: 50px;
@@ -100,14 +114,14 @@
     }
 
     .secondBanner {
-        background-image: url('images/indexWall2.jpg');
+        background-image: url('images/index1.jpg');
         height: 508px;
-        width: 1004px;
+        width: 508px;
     }
 
     .secondBannerIntro {
         width: auto;
-        line-height: 508px;
+        /* line-height: 508px; */
         text-align: center;
         color: white;
         font-family: 'Mansalva', cursive;
