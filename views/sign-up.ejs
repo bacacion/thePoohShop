@@ -3,7 +3,12 @@
 <div style="display: flex; justify-content: center;">
     <div style="background-color: rgba(255, 255, 255, 0.9); padding: 40px; margin-top: 30px; border-radius: 10px;">
         <%- include('parts/contentLogo') %>
-        <form action="#" method="GET">
+        <div class="row" id="msg-bar" style="display: none">
+            <div class="col">
+                <div class="alert" role="alert"></div>
+            </div>
+        </div>
+        <form name="form1" action="#" method="GET" onsubmit="return checkForm()">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="email">Email</label>
@@ -15,22 +20,23 @@
                 </div>
             </div>
             <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="birthday">Birthday</label>
-                        <input type="date" class="form-control" id="birthday" name="birthday" placeholder="YYYY-MM-DD">
-                    </div>
+                <div class="form-group col-md-6">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Name">
                 </div>
+                <div class="form-group col-md-6">
+                    <label for="birthday">Birthday</label>
+                    <input type="date" class="form-control" id="birthday" name="birthday" placeholder="YYYY-MM-DD">
+                </div>
+            </div>
             <div class="form-group">
                 <label for="address">Address</label>
                 <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St">
             </div>
             <div class="form-group">
                 <label for="address2">Address 2</label>
-                <input type="text" class="form-control" id="address2" name="address2" placeholder="Apartment, studio, or floor">
+                <input type="text" class="form-control" id="address2" name="address2"
+                    placeholder="Apartment, studio, or floor">
             </div>
             <div class="form-row">
                 <div class="form-group col-md-8">
@@ -41,14 +47,11 @@
                     <label for="zip">Zip</label>
                     <input type="text" class="form-control" id="zip" name="zip">
                 </div>
-            </div>            
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 </div>
-
-
-
 <%- include('parts/scripts') %>
 <style>
     body {
@@ -57,4 +60,33 @@
         width: 100%;
     }
 </style>
+<script>
+    var msg_bar = $('#msg-bar');
+    var msg_bar_div = msg_bar.find('.alert');
+    var btn = $('button[type=submit]');
+
+    function checkForm() {
+        // TODO: 資料送出前的檢查
+        btn.hide();
+
+        $.post('/sign-up', $(document.form1).serialize(), function (data) {
+            msg_bar_div.removeClass('alert-success');
+            msg_bar_div.removeClass('alert-danger');
+            console.log(data);
+            if (data.success) {
+                msg_bar_div.text('修改成功');
+                msg_bar_div.addClass('alert-success');
+                setTimeout(function () {
+                    location.href = '/data-list';
+                }, 2000);
+            } else {
+                msg_bar_div.text(data.errorMsg);
+                msg_bar_div.addClass('alert-danger');
+                btn.show();
+            }
+            msg_bar.show();
+        }, 'json');
+        return false;
+    }
+</script>
 <%- include('parts/html_foot') %>

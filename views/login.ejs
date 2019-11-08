@@ -10,6 +10,11 @@
     <div class="loginForm">
         <%- include('parts/contentLogo') %>
         <form action="#" method="POST" style="margin-top: 35px; position: relative; top: 4%;">
+            <% if(locals.flashMsg){ %>
+                <div class="alert alert-danger" role="alert">
+                  <%= flashMsg %>
+                </div>
+                <% } %>
             <div class="form-group">
                 <label for="email">Email: </label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Your email.">
@@ -18,11 +23,6 @@
                 <label for="password">Password: </label>
                 <input type="password" class="form-control" id="password" name="password" placeholder="Your password.">
             </div>
-            <% if(locals.flashMsg){ %>
-                <div class="alert alert-danger" role="alert">
-                  <%= flashMsg %>
-                </div>
-                <% } %>
             <div style="padding: 30px; width: 100%;">
                 <div class="col-sm-10">
                     <button type="submit" class="btn btn-primary" style="position: relative; left: 100%; margin-top: 20px;">Sign in</button>

@@ -16,8 +16,6 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-// app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
-
 app.use(session({
     saveUninitialized: false,
     resave: false,
@@ -26,6 +24,14 @@ app.use(session({
         maxAge: 1200000
     }
 }));
+// session帶著走.
+app.use((req,res,next)=>{
+    if(req.session.loginUser){
+        res.locals.loginUser = req.session.loginUser;
+        }
+    next();
+});
+
 // Route 
 app.get('/', (req, res) => {
     res.render('index');
@@ -52,8 +58,53 @@ app.post('/login', (req, res) => {
     };
 
 });
+app.get('/logout', (req,res) => {
+    delete req.session.loginUser;
+    delete res.locals.loginUser;
+    res.render('index');
+});
 app.get('/sign-up', (req, res) => {
     res.render('sign-up');
+});
+app.post('/sign-up', (req, res) => {
+    // TODO: 資料檢查
+    const output = {
+        success: false,
+        code: 400,
+        results: {},
+        errorMsg: '',
+        body: req.body
+    };
+
+    // if (!req.body.name || req.body.name.length < 2) {
+    //     output.code = 410;
+    //     output.errorMsg = '姓名請填兩個字以上';
+    //     return res.json(output);
+    // }
+
+    const sql = "INSERT INTO `client_data`(`email`, `password`, `client_name`, `birthday`, `address`, `reg_time`) VALUES (?,?,?,?,?,NOW())";
+    db.queryAsync(sql, [
+        req.body.email,
+        req.body.password,
+        req.body.name,
+        req.body.birthday,
+        req.body.address,
+    ])
+        .then(results => {
+            output.results = results;
+            if (results.affectedRows === 1) {
+                output.success = true;
+                output.code = 200;
+            } else {
+                output.code = 420;
+                output.errorMsg = '資料新增失敗';
+            }
+            res.json(output);
+        })
+        .catch(error => {
+            //output
+        });
+
 });
 app.get('/forget-password', (req, res) => {
     res.render('forget-password');
@@ -69,5 +120,5 @@ app.use((req, res) => {
     res.send('404 !!!!!!!!!!');
 });
 app.listen(3000, () => {
-    console.log('proj server start');
+    console.log('server start');
 });

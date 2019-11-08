@@ -1,27 +1,34 @@
 <%- include('parts/html_head') %>
 <%- include('parts/navbar') %>
 <!-- Banner -->
-<div class="indexPage indexBackColor">
-    <div class="indexBanner"></div>
+<div class="indexPage indexBackColor" style="padding-top: 80px">
+    <div class="indexBanner" style="position: relative; left: 2.4%;"></div>
 </div>
 <!-- New Arrivals -->
-<div class="indexPage goodTag" id="newArrivals">#New Arrivals</div>
+<div class="indexPage goodTag" id="newArrivals" style="padding-top: 120px">#New Arrivals</div>
+<div class="indexPage" style="padding-bottom: 200px">
+    <div class="card" style="width: 18rem;">
+        <img src="/images/good/poohCoinPurse.jpg" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+</div>
 <!-- secondBanner -->
 <div class="indexPage">
-    <div class="container">
-        <div class="indexBackColor">
-            <div
-                style="width:auto;background-color: rgba(80, 80, 230, 0.6); display: flex; justify-content: flex-start;">
-                <div class="secondBanner"></div>
-                <div class="secondBannerIntro" style="margin:auto">Shop Now!</div>
-            </div>
+    <div class="indexBackColor">
+        <div style="width:auto;background-color: rgba(80, 80, 230, 0.6); display: flex; justify-content: flex-start;">
+            <div class="secondBanner"></div>
+            <div class="secondBannerIntro" style="margin:auto">Shop Now!</div>
         </div>
     </div>
 </div>
 <!-- About Us -->
 <div class="indexBackColor goodTag" id="aboutUs">#About Us</div>
-<div class="indexBackColor" style="padding: 30px;">Winnie-the-Pooh first appeared by name on 24 December 1925, in a
-    Christmas story commissioned and published by the London newspaper The Evening News</div>
+<div class="indexBackColor" style="padding: 30px;"></div>
 
 <!-- contactUs -->
 <div class="indexBackColor goodTag" id="contactUs"
@@ -93,6 +100,11 @@
 
 <%- include('parts/scripts') %>
 <style>
+    .indexTop {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
     .indexBanner {
         background-image: url('/images/indexWall.jpg');
         background-repeat: no-repeat;
@@ -173,6 +185,10 @@
         font-size: 25px;
     }
 
+    .card-img-top {
+        height: auto;
+    }
+
     /* 
     .middleBlock {
         margin: 0px;
@@ -196,5 +212,7 @@
         };
         setTimeout(changeColor(), 1500);
     };
+    $('.indexPage:first').css("paddingRight", 110);
+    $('.indexPage:first').css("paddingLeft", 110);
 </script>
 <%- include('parts/html_foot') %>

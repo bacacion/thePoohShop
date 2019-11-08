@@ -38,7 +38,8 @@
             <!-- line icon出現時，width改為200px -->
             <div class="form-inline my-2 my-lg-0" style="width: 200px;">
                 <% if(locals.loginUser){ %>
-                    <div class="navbar-nav mr-auto"><a href="/members"> Hi, <%= loginUser %></a></div>
+                    <div class="navbar-nav mr-auto" style="font-size: 18px;"><a href="/members"><%= loginUser %></a></div>
+                    <div class="navbar-nav mr-auto"><a href="/logout" title="Logout"><i class="fas fa-door-open"></i></a></div>
                     <% } else { %>
                 <div class="navbar-nav mr-auto"><a href="/login">Login</a></div>
                         <% } %>
