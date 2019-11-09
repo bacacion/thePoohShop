@@ -8,7 +8,7 @@ const fs = require('fs');
 const session = require('express-session');
 const moment = require('moment-timezone');
 var favicon = require('serve-favicon');
-// const db = require(__dirname + '/db-connect');//家中沒有database "shop"
+const db = require(__dirname + '/db-connect');
 
 // Middlewire
 const app = express();
@@ -122,5 +122,3 @@ app.use((req, res) => {
 app.listen(3000, () => {
     console.log('server start');
 });
-
-asdasdsad
