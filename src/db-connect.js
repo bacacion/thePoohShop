@@ -4,7 +4,8 @@ const db = mysql.createConnection({
     host: '192.168.10.114',
     user: 'root',
     password: 'root',
-    port: '8889',
+    // macbook db port:
+    // port: '8889',
     database: 'shop'
 });
 db.connect();
