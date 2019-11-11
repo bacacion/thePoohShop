@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 07, 2019 at 12:22 PM
+-- Generation Time: Nov 11, 2019 at 08:59 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.3.7
 
@@ -35,7 +35,7 @@ CREATE TABLE `client_data` (
   `client_name` varchar(255) NOT NULL,
   `birthday` date NOT NULL,
   `address` varchar(255) NOT NULL,
-  `class` int(11) NOT NULL,
+  `class` int(11) NOT NULL DEFAULT '1',
   `fav_char` varchar(255) NOT NULL,
   `reg_time` date NOT NULL,
   `login_time` int(11) DEFAULT NULL,
@@ -58,7 +58,9 @@ INSERT INTO `client_data` (`id`, `email`, `password`, `client_name`, `birthday`,
 (7, 'pete(16)@gmail.com', '1234', '黃彼得(16)', '1997-05-16', 'asdsgsdgvasdg', 16, 'Pooh', '2019-10-16', 1, NULL, NULL, NULL),
 (8, 'pete(17)@gmail.com', '1234', '黃彼得(17)', '1997-05-17', 'asdsgsdgvasdg', 17, 'Pooh', '2019-10-17', 1, NULL, NULL, NULL),
 (9, 'pete(18)@gmail.com', '1234', '黃彼得(18)', '1997-05-18', 'asdsgsdgvasdg', 18, 'Pooh', '2019-10-18', 1, NULL, NULL, NULL),
-(10, 'pete(19)@gmail.com', '1234', '黃彼得(19)', '1997-05-19', 'asdsgsdgvasdg', 19, 'Pooh', '2019-10-19', 1, NULL, NULL, NULL);
+(10, 'pete(19)@gmail.com', '1234', '黃彼得(19)', '1997-05-19', 'asdsgsdgvasdg', 19, 'Pooh', '2019-10-19', 1, NULL, NULL, NULL),
+(11, 'aaa@gmail.com', 'aaaaaaaa', 'Chuan-Hsin', '2019-10-30', 'Taipei, Taiwan, Min-Chuan East Rd. Sec. 3 No.25XinYi110', 1, 'none', '2019-11-11', NULL, NULL, NULL, NULL),
+(12, 'aaa4@gmail.com', 'kkkkkkkk', 'Chuan-Hsin', '2019-10-28', 'Taipei, Taiwan, Min-Chuan East Rd. Sec. 3 No.25Min-Chuan East Rd. Sec. 3 No.25XinYi110', 1, 'none', '2019-11-11', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -88,8 +90,16 @@ CREATE TABLE `good` (
 --
 
 INSERT INTO `good` (`id`, `good_id`, `product_name`, `whole_price`, `vendor_price`, `create_time`, `stock`, `category`, `character_on`, `intro`, `pic_out`, `pic_in1`, `pic_in2`, `pic_in3`) VALUES
-(1, 10000, '維尼趴睡姿懶懶娃娃', '100', '200', '2019-11-01', '12', 'doll', 'Pooh', '超級可愛的，而且也很軟很Q很好摸！', NULL, NULL, NULL, NULL),
-(2, 10001, '維尼手提包', '300', '500', '2019-11-02', '105', 'bag', 'Pooh', '超級可愛的，而且也很軟很Q很好摸！', NULL, NULL, NULL, NULL);
+(1, 10000, '阿爾卑斯山 H2 小牛皮維尼零錢袋', '100', '200', '2019-11-01', '12', 'doll', 'Pooh', '超級可愛的，而且也很軟很Q很好摸！8種百變表情，轉出好心情！ 360度旋轉指環x超質感詢問度NO.1精品! 合金鑄造的指環，結實耐用! 精緻壓克力硬殼面結合TPU軟邊，防護更細緻! 迪士尼經典影星，精緻支架殼!', '/images/good/poohCoinPurse.jpg', '/images/good/pic123.jpg', '/images/good/pic123.jpg', '/images/good/pic123.jpg'),
+(2, 10001, '維尼愛地球環保飲料提袋', '300', '500', '2019-11-02', '105', 'bag', 'Pooh', '超級可愛的，而且也很軟很Q很好摸！8種百變表情，轉出好心情！ 360度旋轉指環x超質感詢問度NO.1精品! 合金鑄造的指環，結實耐用! 精緻壓克力硬殼面結合TPU軟邊，防護更細緻! 迪士尼經典影星，精緻支架殼!', '/images/good/poohCupBag.jpg', '/images/good/pic123.jpg', '/images/good/pic123.jpg', '/images/good/pic123.jpg'),
+(3, 10002, '輕巧隨身維尼雜物包', '15', '15', '2019-11-11', '10', 'None', 'Pooh', '超級可愛的，而且也很軟很Q很好摸！8種百變表情，轉出好心情！ 360度旋轉指環x超質感詢問度NO.1精品! 合金鑄造的指環，結實耐用! 精緻壓克力硬殼面結合TPU軟邊，防護更細緻! 迪士尼經典影星，精緻支架殼!', '/images/good/poohKeyBag.jpg', '/images/good/pic123.jpg', '/images/good/pic123.jpg', '/images/good/pic123.jpg'),
+(4, 10003, '維尼大洪水方舟濕紙巾', '10', '10', '2019-11-11', '10', 'None', 'Pooh', '超級可愛的，而且也很軟很Q很好摸！8種百變表情，轉出好心情！ 360度旋轉指環x超質感詢問度NO.1精品! 合金鑄造的指環，結實耐用! 精緻壓克力硬殼面結合TPU軟邊，防護更細緻! 迪士尼經典影星，精緻支架殼!', '/images/good/poohWetWipes.jpg', '/images/good/pic123.jpg', '/images/good/pic123.jpg', '/images/good/pic123.jpg'),
+(5, 10004, 'TSUM 陶瓷異鞍環填料 杯墊', '20', '20', '2019-11-11', '10', 'None', 'Pooh', '超級可愛的，而且也很軟很Q很好摸！8種百變表情，轉出好心情！ 360度旋轉指環x超質感詢問度NO.1精品! 合金鑄造的指環，結實耐用! 精緻壓克力硬殼面結合TPU軟邊，防護更細緻! 迪士尼經典影星，精緻支架殼!', '/images/good/tsumCoaster.jpg', '/images/good/pic123.jpg', '/images/good/pic123.jpg', '/images/good/pic123.jpg'),
+(6, 10005, '玉山 H9 小牛皮維尼零錢袋', '30', '30', '2019-11-11', '10', 'None', 'Pooh', '超級可愛的，而且也很軟很Q很好摸！8種百變表情，轉出好心情！ 360度旋轉指環x超質感詢問度NO.1精品! 合金鑄造的指環，結實耐用! 精緻壓克力硬殼面結合TPU軟邊，防護更細緻! 迪士尼經典影星，精緻支架殼!', '/images/good/poohCoinPurse.jpg', '/images/good/pic123.jpg', '/images/good/pic123.jpg', '/images/good/pic123.jpg'),
+(7, 10006, '維尼愛地球環保飲料提袋', '40', '40', '2019-11-11', '10', 'None', 'Pooh', '超級可愛的，而且也很軟很Q很好摸！8種百變表情，轉出好心情！ 360度旋轉指環x超質感詢問度NO.1精品! 合金鑄造的指環，結實耐用! 精緻壓克力硬殼面結合TPU軟邊，防護更細緻! 迪士尼經典影星，精緻支架殼!', '/images/good/poohCupBag.jpg', '/images/good/pic123.jpg', '/images/good/pic123.jpg', '/images/good/pic123.jpg'),
+(8, 10007, '隨身維尼鑰匙包', '50', '50', '2019-11-11', '10', 'None', 'Pooh', '超級可愛的，而且也很軟很Q很好摸！8種百變表情，轉出好心情！ 360度旋轉指環x超質感詢問度NO.1精品! 合金鑄造的指環，結實耐用! 精緻壓克力硬殼面結合TPU軟邊，防護更細緻! 迪士尼經典影星，精緻支架殼!', '/images/good/poohKeyBag.jpg', '/images/good/pic123.jpg', '/images/good/pic123.jpg', '/images/good/pic123.jpg'),
+(9, 10008, '維尼大瀑布方舟濕紙巾', '60', '60', '2019-11-11', '10', 'None', 'Pooh', '超級可愛的，而且也很軟很Q很好摸！8種百變表情，轉出好心情！ 360度旋轉指環x超質感詢問度NO.1精品! 合金鑄造的指環，結實耐用! 精緻壓克力硬殼面結合TPU軟邊，防護更細緻! 迪士尼經典影星，精緻支架殼!', '/images/good/poohWetWipes.jpg', '/images/good/pic123.jpg', '/images/good/pic123.jpg', '/images/good/pic123.jpg'),
+(10, 10009, 'TSUM 玻璃陶瓷杯墊', '70', '70', '2019-11-11', '10', 'None', 'Pooh', '超級可愛的，而且也很軟很Q很好摸！8種百變表情，轉出好心情！ 360度旋轉指環x超質感詢問度NO.1精品! 合金鑄造的指環，結實耐用! 精緻壓克力硬殼面結合TPU軟邊，防護更細緻! 迪士尼經典影星，精緻支架殼!', '/images/good/tsumCoaster.jpg', '/images/good/pic123.jpg', '/images/good/pic123.jpg', '/images/good/pic123.jpg');
 
 -- --------------------------------------------------------
 
@@ -153,13 +163,13 @@ ALTER TABLE `purchase_record`
 -- AUTO_INCREMENT for table `client_data`
 --
 ALTER TABLE `client_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `good`
 --
 ALTER TABLE `good`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `purchase_record`

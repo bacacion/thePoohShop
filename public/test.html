@@ -18,12 +18,17 @@
 </head>
 
 <body>
+        <!-- `INSERT INTO "good"("good_id", "product_name", "whole_price", "vendor_price", "create_time", "stock", "category", "character_on", "intro", "pic_out") VALUES (${10002 + i},"a",${},${},NOW(), "10", "None", "Pooh", "超級可愛的，而且也很軟很Q很好摸！8種百變表情，轉出好心情！ 360度旋轉指環x超質感詢問度NO.1精品! 合金鑄造的指環，結實耐用! 精緻壓克力硬殼面結合TPU軟邊，防護更細緻! 迪士尼經典影星，精緻支架殼!", "/images/good/")` -->
 
-        <img src="public/images/bgimage.jpg" style="max-height:inherit;"></img>
-    <!-- <div><img src="images/poohCupBag.jpg" alt=""></div>
-    <div><img src="images/poohWetWipes.jpg" alt=""></div>
-    <div><img src="images/poohCoinPurse.jpg" alt=""></div>
-    <div><img src="images/tsumCoaster.jpg" alt=""></div> -->
+    <script>
+        document.write(`INSERT INTO "good"("good_id", "product_name", "whole_price", "vendor_price", "create_time", "stock", "category", "character_on", "intro", "pic_out") VALUES `)
+for(i=0;i<8;i++){
+    data= `(${10002 + i},"a",${10*i},${10*i},NOW(), "10", "None", "Pooh", "超級可愛的，而且也很軟很Q很好摸！8種百變表情，轉出好心情！ 360度旋轉指環x超質感詢問度NO.1精品! 合金鑄造的指環，結實耐用! 精緻壓克力硬殼面結合TPU軟邊，防護更細緻! 迪士尼經典影星，精緻支架殼!", "/images/good/"), `
+    document.write(data)
+};
+
+    
+    </script>
 </body>
 
 </html>

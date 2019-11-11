@@ -10,7 +10,8 @@ const moment = require('moment-timezone');
 var favicon = require('serve-favicon');
 const db = require(__dirname + '/db-connect');
 var nodemailer = require('nodemailer');
-const emailService = require(__dirname + '/email');
+const emailService = require(__dirname + '/w3cEmail');
+
 
 // ---------------Middlewire---------------
 const app = express();
@@ -38,7 +39,7 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
     res.render('index');
 });
-
+// ############login&logout############
 app.get('/login', (req, res) => {
     let data = {
         loginUser: req.session.loginUser || "",
@@ -61,20 +62,15 @@ app.post('/login', (req, res) => {
     };
 
 });
-
 app.get('/logout', (req, res) => {
     delete req.session.loginUser;
     delete res.locals.loginUser;
     res.render('index');
 });
-
 app.get('/sign-up', (req, res) => {
     res.render('sign-up');
 });
-
-//  TODO: 帳號是否有重複檢查.
 app.post('/sign-up', (req, res) => {
-    // TODO: 資料檢查
     const output = {
         success: false,
         code: 400,
@@ -96,12 +92,12 @@ app.post('/sign-up', (req, res) => {
         req.body.email,
     ])
         .then(results => {
-            console.log("results.length is " + results.length)
-            console.log(results)
-            if (results.length < 1) {
+            // console.log("results.length is " + results.length)
+            // console.log(results)
+            if (results.length > 0) {
                 output.code = 411;
                 output.errorMsg = 'Email duplicate!';
-                console.log("duplicate emm")
+                // console.log("duplicate email")
                 return res.json(output);
             } else {
                 return db.queryAsync(sql, [
@@ -111,7 +107,8 @@ app.post('/sign-up', (req, res) => {
                     req.body.birthday,
                     req.body.completeAddress,
                 ]);
-            }})
+            }
+        })
         .then(results => {
             // console.log(results);
             output.results = results;
@@ -129,22 +126,25 @@ app.post('/sign-up', (req, res) => {
         });
 
 });
-
+// TODO: email文本設計
 app.get('/forget-password', (req, res) => {
     let data = {
-        forgetmail: req.session.forgetmail || "",
+        getmail: req.session.getmail || "",
         flashMsg: req.session.flashMsg
     };
+    delete req.session.getmail
     delete req.session.flashMsg;
     res.render('forget-password', data);
 });
 app.post('/forget-password', (req, res) => {
     const list = {
-        "aaa@gmail.com": "1234",
-        "bbb@gmail.com": "1234"
+        "b0227390004@gmail.com": "1234444444444444444444",
+        "bbb@gmail.com": "aaaa"
     }
     if (req.body.email && list[req.body.email]) {
-        req.session.forgetmail = list[req.body.email];
+        req.session.getmail = req.body.email;
+        mailtext = `Your password is "${list[req.body.email]}" \n Welcome back!  http://localhost:3000/`
+        emailService(req.body.email, 'Your PoohFavor Password!', mailtext);
         res.redirect('/forget-password');
     } else {
         req.session.flashMsg = 'Incorrect email.'
@@ -152,14 +152,33 @@ app.post('/forget-password', (req, res) => {
     };
 });
 
+// ############Content############
+app.get('/main', (req, res) => {
+    sql = "SELECT * FROM `good` LIMIT 10"
+    data = {}
+    // res.render('main');
+    db.queryAsync(sql)
+        .then(results => {
+            data.rows = results
+            return res.render('main', data);
+        })
+        .catch(error => {
+            console.log(error);
+            res.json(error);
+        });
+});
+app.get('/main/product/:id?', (req,res) => {
+    good_id = parseInt(req.params.id);
+    sql = `SELECT * FROM good WHERE good_id=${good_id}`
+    db.queryAsync(sql)
+        .then(results => {
+            res.json(results);
+        })
+});
+
 app.get('/test', (req, res) => {
-    res.render('test');
+    res.render('mainList');
 });
-
-app.get('/main', (req,res)=> {
-    res.render('main');
-});
-
 app.post('/test', (req, res) => {
     const sql = "SELECT * FROM `client_data` WHERE email=?";
     db.queryAsync(sql, [
@@ -170,11 +189,8 @@ app.post('/test', (req, res) => {
             res.json(results);
         })
 });
-// TODO: email function
-// app.get('/emailTest', (req,res)=>{
-//     emailService.send('dingnew01@gmail.com', 'aaaaa','bbbbb');
-//     redirect('/');
-// });
+
+
 
 // 404 要在 routes 的最後面
 app.use((req, res) => {
