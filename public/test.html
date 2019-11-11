@@ -18,16 +18,18 @@
 </head>
 
 <body>
-        <!-- `INSERT INTO "good"("good_id", "product_name", "whole_price", "vendor_price", "create_time", "stock", "category", "character_on", "intro", "pic_out") VALUES (${10002 + i},"a",${},${},NOW(), "10", "None", "Pooh", "超級可愛的，而且也很軟很Q很好摸！8種百變表情，轉出好心情！ 360度旋轉指環x超質感詢問度NO.1精品! 合金鑄造的指環，結實耐用! 精緻壓克力硬殼面結合TPU軟邊，防護更細緻! 迪士尼經典影星，精緻支架殼!", "/images/good/")` -->
+    <button type="button" id="sdf">12312312</button>
 
     <script>
-        document.write(`INSERT INTO "good"("good_id", "product_name", "whole_price", "vendor_price", "create_time", "stock", "category", "character_on", "intro", "pic_out") VALUES `)
-for(i=0;i<8;i++){
-    data= `(${10002 + i},"a",${10*i},${10*i},NOW(), "10", "None", "Pooh", "超級可愛的，而且也很軟很Q很好摸！8種百變表情，轉出好心情！ 360度旋轉指環x超質感詢問度NO.1精品! 合金鑄造的指環，結實耐用! 精緻壓克力硬殼面結合TPU軟邊，防護更細緻! 迪士尼經典影星，精緻支架殼!", "/images/good/"), `
-    document.write(data)
-};
+        $('#sdf').on('click',tests)
 
-    
+        function tests() {
+            console.log('in the func')
+            itemToCart = "item1=1&qu=2"
+            $.post('/test', itemToCart, function (data) {
+                console.log(data);
+            }, 'json');
+        }
     </script>
 </body>
 

@@ -32,6 +32,13 @@ app.use((req, res, next) => {
     if (req.session.loginUser) {
         res.locals.loginUser = req.session.loginUser;
     }
+    if (req.session.cart) {
+        res.locals.cart = req.session.cart;
+    }
+    // 因為購物車使用運算子in 來判斷，in無法判斷undefined，故res.locals.cart為undefined時將其設為空物件.
+    if (!res.locals.cart) {
+        res.locals.cart = {};
+    }
     next();
 });
 
@@ -42,25 +49,27 @@ app.get('/', (req, res) => {
 // ############login&logout############
 app.get('/login', (req, res) => {
     let data = {
-        loginUser: req.session.loginUser || "",
+        // loginUser: req.session.loginUser || "",
         flashMsg: req.session.flashMsg
     };
     delete req.session.flashMsg;
     res.render('login', data);
 });
 app.post('/login', (req, res) => {
-    const list = {
-        "aaa@gmail.com": "1234",
-        "bbb@gmail.com": "1234"
-    }
-    if (req.body.email && list[req.body.email] === req.body.password) {
-        req.session.loginUser = req.body.email.split("@")[0];
-        res.redirect('/');
-    } else {
-        req.session.flashMsg = 'Incorrect email or password.'
-        res.redirect('/login');
-    };
-
+    const sql = "SELECT email, password FROM client_data WHERE email=?";
+    db.queryAsync(sql, [
+        req.body.email,
+    ])
+        .then(results => {
+            if (req.body.email && results[0].password === req.body.password) {
+                req.session.loginUser = req.body.email.split("@")[0];
+                res.redirect('/');
+            } else {
+                req.session.flashMsg = 'Incorrect email or password.'
+                res.redirect('/login');
+            };
+            // res.json(results[0].email);
+        })
 });
 app.get('/logout', (req, res) => {
     delete req.session.loginUser;
@@ -167,27 +176,66 @@ app.get('/main', (req, res) => {
             res.json(error);
         });
 });
-app.get('/main/product/:id?', (req,res) => {
+app.get('/main/product/:id?', (req, res) => {
     good_id = parseInt(req.params.id);
     sql = `SELECT * FROM good WHERE good_id=${good_id}`
+    data = {}
     db.queryAsync(sql)
         .then(results => {
-            res.json(results);
+            data.rows = results
+            return res.render('mainList', data);
+            // res.json(results)
         })
+        .catch(error => {
+            console.log(error);
+            res.json(error);
+        });
 });
-
-app.get('/test', (req, res) => {
-    res.render('mainList');
-});
-app.post('/test', (req, res) => {
-    const sql = "SELECT * FROM `client_data` WHERE email=?";
-    db.queryAsync(sql, [
-        // req.body.name,
-        req.body.text,
-    ])
+app.get('/cart', (req, res) => {
+    // 如果購物車沒東西則直接進入cart，不進入DB查詢.
+    if(Object.keys(res.locals.cart).length == 0){
+        return res.render('cart');
+    }
+    data = Object.keys(res.locals.cart)
+    var target=""
+    for (i = 0; i < data.length; i++) {
+        target = target + `good_id="${data[i]}"`
+        if(i< data.length-1){
+            target = target + " OR "
+        }
+    }    
+    sql = "SELECT * FROM good WHERE " + target;
+    dataAll={};
+    dataAll.data=res.locals.cart;   
+    db.queryAsync(sql)
         .then(results => {
-            res.json(results);
+            dataAll.rows=results
+            res.render('cart',dataAll)
         })
+});
+app.post('/cart', (req, res) => {
+    cart = res.locals.cart;
+    setCart = function (propertyName, Value) {
+        return cart[propertyName] = parseInt(Value);
+    };
+    getVal = function (propertyName) {
+        return parseInt(cart[propertyName]);
+    }
+    if (req.body.good_id in cart) {
+        value = getVal(req.body.good_id) + parseInt(req.body.quantity);
+        setCart(req.body.good_id, value);
+    } else {
+        setCart(req.body.good_id, parseInt(req.body.quantity))
+    }
+    req.session.cart = cart;
+    res.json(cart);
+});
+app.post('/remove', (req, res) =>{
+    function removeItem(good_id){
+        delete req.session.cart[good_id]
+    };
+    removeItem(req.session.cart.good_id)
+    res.redirect('/cart')
 });
 
 

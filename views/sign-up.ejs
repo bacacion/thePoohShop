@@ -75,7 +75,7 @@
         $.post('/sign-up', $(document.form1).serialize(), function (data) {
             msg_bar_div.removeClass('alert-success');
             msg_bar_div.removeClass('alert-danger');
-            console.log(data);
+            // console.log(document.form1);
             if (data.success) {
                 msg_bar_div.text('Welcome to the Ashdown Forest!');
                 msg_bar_div.addClass('alert-success');
